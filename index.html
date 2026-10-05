@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decisión: Impresora 3D</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <span class="tag">PROPUESTA FAMILIAR</span>
+      <h1>¿Tiene sentido una impresora 3D ahora?</h1>
+      <p>Una decisión sobre un regalo que quiero utilizar durante años.</p>
+    </header>
+
+    <section class="card" id="intro">
+      <h2>Antes de decidir</h2>
+      <p>Ya tuve una impresora 3D y sé que no la aproveché. Precisamente por eso quiero que esta decisión se base en lo que hago ahora, los proyectos que tengo y el compromiso que estoy dispuesto a asumir.</p>
+      <button onclick="startSurvey()">Empezar encuesta →</button>
+    </section>
+
+    <section class="card hidden" id="survey">
+      <div class="progress"><span id="progressBar"></span></div>
+      <p class="counter" id="counter"></p>
+      <div id="question"></div>
+      <div id="answers"></div>
+      <div id="reasonBox" class="hidden">
+        <label for="reason">¿Por qué?</label>
+        <textarea id="reason" placeholder="Escribe el motivo con tus propias palabras..."></textarea>
+      </div>
+      <div class="nav">
+        <button class="secondary" id="backBtn" onclick="previousQuestion()">← Atrás</button>
+        <button id="nextBtn" onclick="nextQuestion()">Continuar →</button>
+      </div>
+    </section>
+
+    <section class="card hidden" id="result">
+      <span class="tag">RESULTADO</span>
+      <h2>Encuesta completada</h2>
+      <p id="resultText"></p>
+      <div id="resultDetails"></div>
+      <button onclick="window.print()">Imprimir respuestas</button>
+      <button class="secondary" onclick="restart()">Volver a empezar</button>
+    </section>
+
+    <footer>Propuesta de cumpleaños + Navidad · Una herramienta para crear, aprender y construir.</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
