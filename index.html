@@ -7,45 +7,64 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="app">
-    <header class="hero">
-      <span class="tag">PROPUESTA FAMILIAR</span>
-      <h1>¿Tiene sentido una impresora 3D ahora?</h1>
-      <p>Una decisión sobre un regalo que quiero utilizar durante años.</p>
-    </header>
+<main class="app">
+  <header class="hero">
+    <span class="tag">PROPUESTA FAMILIAR</span>
+    <h1>¿Tiene sentido una impresora 3D ahora?</h1>
+    <p>Una decisión sobre un regalo que quiero utilizar durante años.</p>
+  </header>
 
-    <section class="card" id="intro">
-      <h2>Antes de decidir</h2>
-      <p>Ya tuve una impresora 3D y sé que no la aproveché. Precisamente por eso quiero que esta decisión se base en lo que hago ahora, los proyectos que tengo y el compromiso que estoy dispuesto a asumir.</p>
-      <button onclick="startSurvey()">Empezar encuesta →</button>
-    </section>
+  <section class="card" id="intro">
+    <h2>Encuesta familiar</h2>
+    <p>La encuesta será respondida por dos personas, una después de la otra. Las respuestas permanecerán ocultas hasta que el dispositivo vuelva al presentador.</p>
+    <button onclick="startSurvey(1)">Empezar con la persona 1 →</button>
+  </section>
 
-    <section class="card hidden" id="survey">
-      <div class="progress"><span id="progressBar"></span></div>
-      <p class="counter" id="counter"></p>
-      <div id="question"></div>
-      <div id="answers"></div>
-      <div id="reasonBox" class="hidden">
-        <label for="reason">¿Por qué?</label>
-        <textarea id="reason" placeholder="Escribe el motivo con tus propias palabras..."></textarea>
-      </div>
-      <div class="nav">
-        <button class="secondary" id="backBtn" onclick="previousQuestion()">← Atrás</button>
-        <button id="nextBtn" onclick="nextQuestion()">Continuar →</button>
-      </div>
-    </section>
+  <section class="card hidden" id="survey">
+    <div class="phase"><span id="phaseLabel"></span></div>
+    <div class="progress"><span id="progressBar"></span></div>
+    <p class="counter" id="counter"></p>
+    <div id="question"></div>
+    <div id="answers"></div>
+    <div id="reasonBox" class="hidden">
+      <label for="reason">¿Por qué?</label>
+      <textarea id="reason" placeholder="Explica el motivo..."></textarea>
+      <p class="hint">Evita insultos o comentarios sobre la situación económica de la familia. La idea es entender el motivo real.</p>
+      <p class="error hidden" id="reasonError"></p>
+    </div>
+    <div class="nav">
+      <button class="secondary" id="backBtn" onclick="previousQuestion()">← Atrás</button>
+      <button id="nextBtn" onclick="nextQuestion()">Continuar →</button>
+    </div>
+  </section>
 
-    <section class="card hidden" id="result">
-      <span class="tag">RESULTADO</span>
-      <h2>Encuesta completada</h2>
-      <p id="resultText"></p>
-      <div id="resultDetails"></div>
-      <button onclick="window.print()">Imprimir respuestas</button>
-      <button class="secondary" onclick="restart()">Volver a empezar</button>
-    </section>
+  <section class="card hidden handoff" id="handoff">
+    <span class="tag">CAMBIO DE PERSONA</span>
+    <h2 id="handoffTitle"></h2>
+    <p id="handoffText"></p>
+    <div class="lock">🔒 Respuestas ocultas</div>
+    <button id="handoffButton" onclick="continueHandoff()">Pasar a la siguiente persona →</button>
+  </section>
 
-    <footer>Propuesta de cumpleaños + Navidad · Una herramienta para crear, aprender y construir.</footer>
-  </main>
-  <script src="script.js"></script>
+  <section class="card hidden" id="presenter">
+    <span class="tag">MODO PRESENTADOR</span>
+    <h2>Ahora pásame el dispositivo</h2>
+    <p>Las dos personas ya han terminado. Las respuestas siguen ocultas.</p>
+    <div class="lock">🔒 RESPUESTAS BLOQUEADAS</div>
+    <button onclick="revealAnswers()">Revelar respuestas</button>
+  </section>
+
+  <section class="card hidden" id="result">
+    <span class="tag">RESULTADOS</span>
+    <h2>Respuestas de la encuesta</h2>
+    <p id="resultText"></p>
+    <div id="resultDetails"></div>
+    <button onclick="window.print()">Imprimir resultados</button>
+    <button class="secondary" onclick="restart()">Nueva encuesta</button>
+  </section>
+
+  <footer>Propuesta de cumpleaños + Navidad · Una herramienta para crear, aprender y construir.</footer>
+</main>
+<script src="script.js"></script>
 </body>
 </html>
